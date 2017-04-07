@@ -38,17 +38,20 @@ app.use(session({
   secret: process.env.SESSION_SECRET || 'pizzashacksupersecretkey'
 }))
 
+require('./lib/passport-strategies')
+app.use(passport.initialize())
+app.use(passport.session())
+
+app.use((req, res, next) => {
+  app.locals.email = req.user && req.user.email
+  next()
+})
+
 
 app.use(express.static('public'))
 app.use(routes)
 
 
-app.get('/login', (req, res, next) => {
-  res.render('login', {page: 'Login'})
-})
-app.get('/register', (req, res, next) => {
-  res.render('register', {page: 'Register'})
-})
 app.use((req, res) => {
   res.render('404')
 })

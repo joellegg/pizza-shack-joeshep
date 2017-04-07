@@ -7,8 +7,8 @@ const router = Router();
 router.use(require('./root'));
 router.use(require('./about'));
 router.use(require('./contact'));
-// router.use(require('./login'));
-// router.use(require('./register'));
+router.use(require('./login'));
+router.use(require('./register'));
 
 // login guard middleware. If not register send to '/'
 // router.use((req, res, next) => {
@@ -20,7 +20,7 @@ router.use(require('./contact'));
 // });
 
 // private routes
-// router.use(require('./logout'));
+router.use(require('./logout'));
 router.use(require('./order'));
 
 module.exports = router;
