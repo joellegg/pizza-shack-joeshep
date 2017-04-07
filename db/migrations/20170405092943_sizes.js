@@ -3,7 +3,7 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable('sizes', table => {
     table.increments()
     table.string('name').notNullable()
-    table.integer('sizes').notNullable()
+    table.integer('inches').notNullable()
   })
 };
 
